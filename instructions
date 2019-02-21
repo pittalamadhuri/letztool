@@ -1,0 +1,4 @@
+After running the app, give the default editor and default player path
+After saving them, default applications of letznav will be available in the app list
+Add a new app from the add application form below set paths
+Application is the name that should be displayed in the select list and domain name is the string in the application URL( Example: demo-ml.herokuapp)

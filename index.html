@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "UTF-8">
+      <title>letzNav</title>
+      <!--<script>localStorage.clear();</script>-->
+      <link rel="stylesheet" href="./styles.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <!--<link rel = "stylesheet" href = "./bower_components/bootstrap/dist/css/bootstrap.min.css" />-->
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+      <script src = "./extensions.js" ></script>
+      <script src = "./migrate.js" ></script>
+      <script src = "./dashboard.js" ></script>
+   </head>   
+   <body>
+     <div class="container">
+       <div class="menubar">
+       <ul class='nav nav-tabs'>
+       <li class=active><a data-toggle="tab" href="#extensions">Extensions</a></li>
+       <li><a data-toggle="tab" href="#migration">Migration</a></li>
+       <li><a data-toggle="tab" href="#admins">Admins</a></li> 
+     </ul></div>
+     <div class="tab-content">
+      <div id="extensions" class = "tab-pane fade in active">
+         <div class="page-header"><h2 style="color:blue">Manage Extensions</h2>
+         <p>First set paths of player and editor and then add Application</p>
+        </div>
+                <div class="form-group">
+                        <label for="sel1">letzNav Application:</label>
+                            <select id="extensionlist" class="form-control">
+                            </select>
+                </div>
+         <button class = "btn btn-success" id = "countbtn" onclick="load()">Load</button>
+         <div class="progress" style="margin-top:20px">
+                <div class="progress-bar" id="bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                </div>
+              </div>
+         <div class="page-header"><h2 style="color:blue">Set Paths</h2></div>
+         <div class="form-group"><label>Player Path</label><input type=text id=playerPath class="form-control"></div>
+         <div class="form-group"><label>Editor Path</label><input type=text id=editorPath class="form-control"></div>
+         <button class = "btn btn-success" onclick="pathUpdate()">Set Paths</button>
+         <div class="page-header"><h2 style="color:blue">Add Application</h2></div>
+         <div class="form-group"><label>Application</label><input type=text id=appName class="form-control"></div>
+         <div class="form-group"><label>Domain name</label><input type=text id=appDomain class="form-control"></div>
+         <button class = "btn btn-success" onclick="addApp()" style="margin-bottom:20px">Add Application</button>
+      </div>
+      <div id="migration" class="tab-pane fade">
+          <div class="page-header"><h2 style="color:blue">Migrate flow</h2>
+          <p>This does not copy the screenshots and jumpsteps of the flow</p>
+        </div>
+        <div class="form-group"><label>Source Admin name</label><input type=text id=src class="form-control"></div>
+         <div class="form-group"><label>Target Admin name</label><input type=text id=tar class="form-control"></div>
+         <div class="form-group"><label>Flow Name</label><input type=text id=flowname class="form-control"></div>
+         <div class="form-group"><label>Target Application ID</label><input type=text id=appid class="form-control"></div>
+         <button class = "btn btn-success" onclick="copyFlow()" style="margin-bottom:20px">Copy</button>
+         <button class = "btn btn-success" onclick="window.location.reload()" style="margin-bottom:20px">Reset</button>
+         <div class="progress" style="margin-top:5px">
+          <div class="progress-bar" id="copybar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+          </div>
+        </div>
+      </div>
+      <div id="admins" class="tab-pane fade">
+        <div class="page-header"><h2 style="color:blue">Admins</h2>
+          <p>This displays a list of Admins in Heroku</p>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Application</th>
+              <th>Region</th>
+              <th>Web-URL</th>
+              <th>Pipeline</th>
+              <th>Version</th>
+            </tr>
+          </thead>
+          <tbody id=list>
+          </tbody>
+        </table>
+      </div> 
+      </div>
+    </div>
+   </body>
+</html>
